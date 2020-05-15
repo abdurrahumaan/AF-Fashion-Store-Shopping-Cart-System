@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "^0.19.2",
     "base64-img": "^1.0.4",
-    "bootstrap": "3.3.7",
+    "bootstrap": "3.4.1",
     "chartist": "0.10.1",
     "image-to-base64": "^2.1.0",
     "node-sass": "4.12.0",
