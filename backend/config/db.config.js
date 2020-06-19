@@ -1,3 +1,3 @@
 module.exports={
-    url:"mongodb://localhost:27017/fashionstoredb"
+    url:"mongodb+srv://runtimers:runtimers123@runtimers-5vvhq.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority"
 }
