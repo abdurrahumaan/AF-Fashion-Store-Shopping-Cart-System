@@ -2,6 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+const path = require('path');
+
 const app = express();
 app.use(express.static('./public'));
 
@@ -19,9 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.urlencoded({ extended: false }));
 
 // simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to application." });
-});
+// app.get("/", (req, res) => {
+//   res.json({ message: "Welcome to application." });
+// });
 
 require("./routes/category.routes")(app);
 require("./routes/user.routes")(app);
@@ -31,6 +33,13 @@ require("./routes/cart.routes")(app);
 require("./routes/watchlist.routes")(app);
 require("./routes/checkout.routes")(app);
 require("./routes/send.email.routes")(app);
+
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('*', (req, res) =>
+      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html ')));
+}
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
